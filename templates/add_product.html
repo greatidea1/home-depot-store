@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Add New Product</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <form method="post">
+                <label for="product_name">Product Name:</label>
+                <input type="text" name="product_name" required><br><br>
+
+                <label for="category_id">Category:</label>
+                <select name="category_id" required>
+                    {% for category in categories %}
+                        <option value="{{ category.category_id }}">{{ category.category_name }}</option>
+                    {% endfor %}
+                </select><br><br>
+
+                <label for="price">Price:</label>
+                <input type="number" name="price" step="0.01" required><br><br>
+
+                <label for="stock_quantity">Stock Quantity:</label>
+                <input type="number" name="stock_quantity" required><br><br>
+
+                <label for="description">Description:</label>
+                <textarea name="description" required></textarea><br><br>
+
+                <button type="submit">Add Product</button>
+            </form>
+
+            <br><br>
+            <a href="{{ url_for('index') }}">Back to Product List</a>
+        </div>
+    </main>
+</body>
+</html>
